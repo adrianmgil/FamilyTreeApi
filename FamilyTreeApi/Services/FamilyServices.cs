@@ -11,7 +11,7 @@ namespace FamilyTreeApi.Services
         Task<int> Update(int personId, Person person);
         Task<int> CreatePerson(Person person);
         Task<int> CreateChild(int parentId, Person person);
-        Task<int> CreateParent(int childId, Person person);
+        Task<int> CreateParent(int personId, Person person);
         Task DeletePerson(int personId);
         Task CreateSpouse(int personId, Person person);
     }
@@ -64,12 +64,12 @@ namespace FamilyTreeApi.Services
             await familyDataAccess.UpdateChildren(parent.Id, parent.Children);
         }
 
-        public async Task<int> CreateParent(int childId, Person person)
+        public async Task<int> CreateParent(int personId, Person person)
         {
-            var child = await familyDataAccess.GetPerson(childId);
+            var child = await familyDataAccess.GetPerson(personId);
             if (child != null)
             {
-                person.Children = new int[] { childId };
+                person.Children = new int[] { personId };
                 return await CreatePerson(person);
             }
             return 0;

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FamilyTreeApi.Controllers
 {
     [ApiController]
-    [Route("Family")]
+    [Route("family")]
     public class FamilyControllers : ControllerBase
     {
         private readonly IFamilyServices familyServices;
@@ -54,10 +54,10 @@ namespace FamilyTreeApi.Controllers
         }
 
         [HttpPost]
-        [Route("parent/{childId}")]
-        public async Task<IActionResult> CreateParent(int childId, [FromBody] Person person)
+        [Route("parent/{personId}")]
+        public async Task<IActionResult> CreateParent(int personId, [FromBody] Person person)
         {
-            await familyServices.CreateParent(childId, person);
+            await familyServices.CreateParent(personId, person);
             return Ok(Response);
         }
 

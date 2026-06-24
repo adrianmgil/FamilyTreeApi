@@ -34,8 +34,8 @@ namespace FamilyTreeApi.Extensions
                 Nickname = item.Nickname,
                 Gender = item.Gender,
                 DOB = item.DOB,
-                //Spouses = item.Spouse?.ToString(),
-                //Children = item.Children.ConvertArrayInttoString(),
+                Spouses = item.Spouse?.ToString(),
+                Children = item.Children.ConvertArrayInttoString(),
             };
         }
 

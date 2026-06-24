@@ -52,11 +52,11 @@ namespace FamilyTreeApi.DataAccess
         public async Task<int> CreatePerson(PersonQueryModel person)
         {
             const string sql = @"
-                INSERT INTO Persons (Nickname, Name, Gender, DOB)
-                    VALUES (@Nickname, @Name, @Gender, @DOB);
+                INSERT INTO Persons (Nickname, Name, Gender, DOB, Children)
+                    VALUES (@Nickname, @Name, @Gender, @DOB, @Children);
                 SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
-            return await connection.QueryFirstAsync<int>(sql, new { person.Nickname, person.Name, person.Gender, person.DOB });
+            return await connection.QueryFirstAsync<int>(sql, new { person.Nickname, person.Name, person.Gender, person.DOB, person.Children });
         }
 
         public async Task<string> GetChildren(int personId)
